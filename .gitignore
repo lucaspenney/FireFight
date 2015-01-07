@@ -11,4 +11,5 @@
 *.sdf
 *.opensdf
 *.vcxproj
-
+Makefile
+makefile
