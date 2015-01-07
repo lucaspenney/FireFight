@@ -2,3 +2,13 @@
 /dist/
 /nbproject/
 .dep.inc
+/Debug/
+/deps/
+*vcxproj.user
+*vcxproj.filters
+*.suo
+*.sln
+*.sdf
+*.opensdf
+*.vcxproj
+
