@@ -8,7 +8,7 @@ public:
 	~Application();
 
 private:
-	Renderer* mRenderer;
-	InputManager* mInputManager;
+	Renderer* mRenderer = nullptr;
+	InputManager* mInputManager = nullptr;
 };
 

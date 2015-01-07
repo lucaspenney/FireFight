@@ -1,17 +1,18 @@
 #include "Application.h"
 #include "Menu.h"
 #include "AssetManager.h"
+#include "Renderer.h"
 
 Application::Application()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-	mRenderer = &Renderer(800, 600, &window);
+	mRenderer = new Renderer(800, 600, &window);
 
-	mInputManager = &InputManager(&window);
+	mInputManager = new InputManager(&window);
 
-	AssetManager assetManager;
+	AssetManager assetManager; //Static class instantiation
 
-	Menu mainMenu;
+	Menu mainMenu; //Temporary
 
 	while (window.isOpen()) {
 		window.clear();
