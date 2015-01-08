@@ -18,7 +18,7 @@ Player::~Player()
 
 void Player::render(Renderer* renderer) {
 	//Update the render view
-	view.setCenter(100, 400);
+	view.setCenter(0, 0);
 	
 	//Set the renderer to this players view
 	renderer->getWindow()->setView(view);
@@ -28,6 +28,16 @@ void Player::render(Renderer* renderer) {
 }
 
 void Player::update() {
-	x += 1;
-	y += 1;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+		x -= 2;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+		x += 2;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+		y -= 2;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+		y += 2;
+	}
 }

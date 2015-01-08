@@ -8,6 +8,7 @@
 Application::Application()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+	window.setVerticalSyncEnabled(true);
 	mRenderer = new Renderer(800, 600, &window);
 
 	mInputManager = new InputManager(&window);
