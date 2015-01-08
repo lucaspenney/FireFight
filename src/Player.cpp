@@ -2,11 +2,16 @@
 #include "Renderer.h"
 #include "AssetManager.h"
 
-Player::Player()
+Player::Player(Renderer* renderer)
 {
+	mRenderer = renderer;
 	sprite.setTexture(AssetManager::textures["fire_extinguisher"]);
 	sprite.setScale(sf::Vector2f(4, 4));
 	sprite.setPosition(500.0f, 500.f);
+	
+	view.setCenter(-200, 400);
+	//Set the renderer to this players view
+	mRenderer->getWindow()->setView(view);
 }
 
 

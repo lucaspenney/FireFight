@@ -15,3 +15,7 @@ void Renderer::drawSprite(sf::Sprite sprite, int x, int y) {
 	sprite.setPosition(x, y);
 	mRenderWindow->draw(sprite);
 }
+
+sf::RenderWindow* Renderer::getWindow() {
+	return mRenderWindow;
+}

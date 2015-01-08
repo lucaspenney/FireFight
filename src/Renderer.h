@@ -5,8 +5,9 @@ class Renderer
 {
 public:
 	Renderer(int width, int height, sf::RenderWindow* renderWindow);
-	void drawSprite(sf::Sprite sprite, int x, int y);
 	~Renderer();
+	void drawSprite(sf::Sprite sprite, int x, int y);
+	sf::RenderWindow* getWindow();
 private:
 	int mScreenWidth;
 	int mScreenHeight;

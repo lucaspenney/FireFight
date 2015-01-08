@@ -15,7 +15,7 @@ Application::Application()
 	AssetManager assetManager; //Static class instantiation
 
 	Menu mainMenu; //Temporary
-	Player p;
+	Player p(mRenderer);
 	Level level;
 	level.entities.insert(level.entities.begin(), &p);
 
