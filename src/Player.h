@@ -4,7 +4,7 @@
 class Player : public Entity
 {
 public:
-	Player(Renderer* renderer);
+	Player();
 	~Player();
 	int x = 0;
 	int y = 0;
@@ -14,6 +14,6 @@ public:
 	virtual void update();
 	
 	private:
-		Renderer* mRenderer;
+		
 };
 
