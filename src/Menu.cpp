@@ -3,8 +3,8 @@
 
 Menu::Menu()
 {
-	sprite.setTexture(AssetManager::textures["fire_extinguisher"]);
-	sprite.setScale(sf::Vector2f(4, 4));
+	//sprite.setTexture(AssetManager::textures["fire_extinguisher"]);
+	//sprite.setScale(sf::Vector2f(4, 4));
 }
 
 
