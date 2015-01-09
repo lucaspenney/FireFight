@@ -17,4 +17,7 @@ void AssetManager::loadTextures() {
 	if (texture.loadFromFile("sprites/fire_extinguisher.png")) {
 		AssetManager::textures["fire_extinguisher"] = texture;
 	}
+	if (texture.loadFromFile("sprites/tilesheet.png")) {
+		AssetManager::textures["tilesheet"] = texture;
+	}
 }

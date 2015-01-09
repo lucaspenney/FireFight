@@ -1,14 +1,13 @@
 #include "Level.h"
 #include "Player.h"
 #include "Tile.h"
-
+#include "AssetManager.h"
 #include <fstream>
 #include <rapidjson/document.h>
-#include <iostream>
 
 Level::Level()
 {
-
+	
 }
 
 
@@ -45,7 +44,7 @@ bool Level::loadLevelFile(std::string filePath) {
 		fileContents.append(s);
 	}
 	file.close();
-	std::cout << fileContents;
+
 	rapidjson::Document jsonDoc;
 	
 	jsonDoc.Parse(fileContents.c_str());
@@ -56,11 +55,8 @@ bool Level::loadLevelFile(std::string filePath) {
 	rapidjson::Value& layers = jsonDoc["layers"];
 	for (rapidjson::SizeType i = 0; i < layers.Size(); i++) {
 		rapidjson::Value& data = layers[i]["data"];
-		for (rapidjson::SizeType i = 0; i < data.Size(); i++) {
-
-			tiles.push_back(new Tile(i / 32, i % 32));
-			
-			std::cout << "Creating tile at " << i % 32 << " " << i / 32 << std::endl;
+		for (rapidjson::SizeType k = 0; k < data.Size(); k++) {
+			tiles.push_back(new Tile(data[k].GetInt(), k % width, k / width));
 		}
 	}
 	return true;

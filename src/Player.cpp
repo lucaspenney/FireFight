@@ -5,8 +5,8 @@
 Player::Player()
 {
 	sprite.setTexture(AssetManager::textures["fire_extinguisher"]);
-	sprite.setScale(sf::Vector2f(4, 4));
 	sprite.setPosition(500.0f, 500.f);
+	view.zoom(0.5f);
 }
 
 
@@ -18,7 +18,7 @@ Player::~Player()
 
 void Player::render(Renderer* renderer) {
 	//Update the render view
-	view.setCenter(0, 0);
+	view.setCenter(x,y);
 	
 	//Set the renderer to this players view
 	renderer->getWindow()->setView(view);

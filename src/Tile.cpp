@@ -1,10 +1,17 @@
 #include "Tile.h"
+#include "AssetManager.h"
 #include <SFML/Graphics.hpp>
-
-Tile::Tile(int x, int y)
+#include <iostream>
+Tile::Tile(int id, int x, int y)
 {
+	id--;
+	this->id = id;
 	this->x = x;
 	this->y = y;
+	sprite.setTexture(AssetManager::textures["tilesheet"]);
+	int xTile = (id % 16) * 32;
+	int yTile = (id / 16) * 32;
+	sprite.setTextureRect(sf::IntRect(xTile, yTile, 32, 32));
 }
 
 
@@ -13,8 +20,5 @@ Tile::~Tile()
 }
 
 void Tile::render(Renderer* renderer) {
-	sf::CircleShape shape(20);
-	shape.setPosition(x*32, y*32);
-	shape.setFillColor(sf::Color(50, 100, 50));
-	renderer->getWindow()->draw(shape);
+	renderer->drawSprite(sprite, x * 32, y * 32);
 }
