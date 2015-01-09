@@ -4,11 +4,13 @@
 #include "Renderer.h"
 #include "Level.h"
 #include "Player.h"
+#include "Game.h"
 
 Application::Application()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
 	window.setVerticalSyncEnabled(true);
+	window.setFramerateLimit(60);
 	mRenderer = new Renderer(800, 600, &window);
 
 	mInputManager = new InputManager(&window);
@@ -16,16 +18,15 @@ Application::Application()
 	AssetManager assetManager; //Static class instantiation
 
 	Menu mainMenu; //Temporary
-	Player p;
-	Level level;
-	level.entities.insert(level.entities.begin(), &p);
 
+	Game game;
 	while (window.isOpen()) {
 		window.clear();
 		//Perform rendering here
 		window.draw(mainMenu.sprite);
-		level.render(mRenderer);
-		level.update();
+
+		game.render(mRenderer);
+		game.update();
 
 		window.display();
 		mInputManager->handleInput();
