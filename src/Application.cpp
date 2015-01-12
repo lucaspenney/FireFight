@@ -2,8 +2,6 @@
 #include "Menu.h"
 #include "AssetManager.h"
 #include "Renderer.h"
-#include "Level.h"
-#include "Player.h"
 #include "Game.h"
 
 Application::Application()

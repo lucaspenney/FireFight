@@ -16,6 +16,12 @@ void Renderer::drawSprite(sf::Sprite sprite, int x, int y) {
 	mRenderWindow->draw(sprite);
 }
 
+void Renderer::setView(sf::View* view) {
+	view->setSize(mScreenWidth, mScreenHeight);
+	view->zoom(0.5f);
+	mRenderWindow->setView(*view);
+}
+
 sf::RenderWindow* Renderer::getWindow() {
 	return mRenderWindow;
 }

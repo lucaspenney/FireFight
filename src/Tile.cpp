@@ -12,6 +12,7 @@ Tile::Tile(int id, int x, int y)
 	int xTile = (id % 16) * 32;
 	int yTile = (id / 16) * 32;
 	sprite.setTextureRect(sf::IntRect(xTile, yTile, 32, 32));
+	boundingBox = new BoundingBox(x, y, 32, 32);
 }
 
 
@@ -20,5 +21,5 @@ Tile::~Tile()
 }
 
 void Tile::render(Renderer* renderer) {
-	renderer->drawSprite(sprite, x * 32, y * 32);
+	renderer->drawSprite(sprite, x, y);
 }

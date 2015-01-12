@@ -15,6 +15,6 @@ void Entity::render(Renderer* renderer) {
 	
 }
 
-void Entity::update() {
+void Entity::update(Game* game) {
 	
 }

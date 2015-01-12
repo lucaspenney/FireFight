@@ -1,20 +1,21 @@
-#ifndef GAME_H
-#define	GAME_H
-#include "Level.h"
-#include "Renderer.h"
-#include "Player.h"
+#pragma once
 
-class Game {
+#include "Renderer.h"
+
+#include <vector>
+class Entity;
+class Level;
+class Player;
+class Game 
+{
 public:
 	Game();
 	~Game();
-	Level level;
+	Level* level;
 	void update();
 	void render(Renderer* renderer);
-	Player player;
+	std::vector<Entity*> entities;
+	Player* player;
 private:
 
 };
-
-#endif	/* GAME_H */
-

@@ -1,12 +1,16 @@
 #include "Player.h"
 #include "Renderer.h"
 #include "AssetManager.h"
+#include "Game.h"
+#include "Level.h"
 
 Player::Player()
 {
+	x = 150;
+	y = 100;
 	sprite.setTexture(AssetManager::textures["fire_extinguisher"]);
-	sprite.setPosition(500.0f, 500.f);
-	view.zoom(0.5f);
+	boundingBox = new BoundingBox(x, y, 24, 32);
+
 }
 
 
@@ -18,26 +22,43 @@ Player::~Player()
 
 void Player::render(Renderer* renderer) {
 	//Update the render view
-	view.setCenter(x,y);
-	
+	view.setCenter(x, y);
+
 	//Set the renderer to this players view
-	renderer->getWindow()->setView(view);
+	renderer->setView(&view);
 	
 	//Render the player
 	renderer->drawSprite(sprite, x, y);
 }
 
-void Player::update() {
+void Player::update(Game* game) {
+	boundingBox->setPosition(x, y);
+	int xMove = 0;
+	int yMove = 0;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		x -= 2;
+		xMove -= 2;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		x += 2;
+		xMove += 2;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		y -= 2;
+		yMove -= 2;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		y += 2;
+		yMove += 2;
 	}
+
+
+	for (std::vector<Tile*>::iterator it = game->level->tiles.begin(); it != game->level->tiles.end(); ++it) {
+		Tile* tile = *it;
+		if (!tile->solid) continue;
+		if (boundingBox->wouldCollide(tile->boundingBox, xMove, 0)) {
+			xMove = 0;
+		}
+		if (boundingBox->wouldCollide(tile->boundingBox, 0, yMove)) {
+			yMove = 0;
+		}
+	}
+	x += xMove;
+	y += yMove;
 }
