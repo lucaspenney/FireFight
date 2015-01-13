@@ -3,13 +3,15 @@
 #include "AssetManager.h"
 #include "Renderer.h"
 #include "Game.h"
+#include "SettingsManager.h"
 
 Application::Application()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-	window.setVerticalSyncEnabled(true);
-	window.setFramerateLimit(60);
-	mRenderer = new Renderer(800, 600, &window);
+	SettingsManager settings;
+	sf::RenderWindow window(sf::VideoMode(settings.screenWidth, settings.screenHeight), "SFML works!");
+	window.setVerticalSyncEnabled(settings.verticalSync);
+	window.setFramerateLimit(settings.framerateLimit);
+	mRenderer = new Renderer(settings.screenWidth, settings.screenHeight, &window);
 
 	mInputManager = new InputManager(&window);
 

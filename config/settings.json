@@ -1,0 +1,6 @@
+{
+        "screenWidth": 136,
+        "screenHeight": 768,
+        "framerateLimit": 60,
+        "verticalSync": true
+}
