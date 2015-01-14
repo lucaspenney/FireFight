@@ -10,8 +10,8 @@ Player::Player()
 	y = 100;
 	sprite.setTexture(AssetManager::textures["player"]);
 
-	animatedSprite = new AnimatedSprite(&sprite, 3, 4, 26, 45);
-	boundingBox = new BoundingBox(x, y, 24, 32);
+	animatedSprite = new AnimatedSprite(&sprite, 3, 4, 27, 47);
+	boundingBox = new BoundingBox(x, y, 23, 25);
 
 }
 
@@ -35,20 +35,24 @@ void Player::render(Renderer* renderer) {
 }
 
 void Player::update(Game* game) {
-	boundingBox->setPosition(x, y);
+	boundingBox->setPosition(x, y+20);
 	int xMove = 0;
 	int yMove = 0;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		xMove -= 2;
+		animatedSprite->setAnimationType(4);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		xMove += 2;
+		animatedSprite->setAnimationType(2);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 		yMove -= 2;
+		animatedSprite->setAnimationType(1);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 		yMove += 2;
+		animatedSprite->setAnimationType(3);
 	}
 
 
@@ -61,6 +65,9 @@ void Player::update(Game* game) {
 		if (boundingBox->wouldCollide(tile->boundingBox, 0, yMove)) {
 			yMove = 0;
 		}
+	}
+	if (xMove == 0 && yMove == 0) {
+		animatedSprite->setAnimationFrame(1);
 	}
 	x += xMove;
 	y += yMove;
