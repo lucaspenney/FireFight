@@ -8,7 +8,9 @@ Player::Player()
 {
 	x = 150;
 	y = 100;
-	sprite.setTexture(AssetManager::textures["fire_extinguisher"]);
+	sprite.setTexture(AssetManager::textures["player"]);
+
+	animatedSprite = new AnimatedSprite(&sprite, 3, 4, 26, 45);
 	boundingBox = new BoundingBox(x, y, 24, 32);
 
 }
@@ -26,9 +28,10 @@ void Player::render(Renderer* renderer) {
 
 	//Set the renderer to this players view
 	renderer->setView(&view);
+	animatedSprite->tick();
 	
 	//Render the player
-	renderer->drawSprite(sprite, x, y);
+	renderer->drawSprite(*animatedSprite->sprite, x, y);
 }
 
 void Player::update(Game* game) {

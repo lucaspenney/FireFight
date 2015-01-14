@@ -20,4 +20,7 @@ void AssetManager::loadTextures() {
 	if (texture.loadFromFile("sprites/tilesheet.png")) {
 		AssetManager::textures["tilesheet"] = texture;
 	}
+	if (texture.loadFromFile("sprites/player.png")) {
+		AssetManager::textures["player"] = texture;
+	}
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include "BoundingBox.h"
+#include "AnimatedSprite.h"
 #include <SFML/Graphics.hpp>
 class Player : public Entity
 {
@@ -10,6 +11,7 @@ public:
 	int x = 0;
 	int y = 0;
 	sf::Sprite sprite;
+	AnimatedSprite* animatedSprite;
 	sf::View view;
 	BoundingBox* boundingBox;
 	virtual void render(Renderer* renderer);
