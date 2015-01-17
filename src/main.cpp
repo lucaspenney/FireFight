@@ -1,7 +1,10 @@
 #include "Application.h"
+#include "GameServer.h"
 #include <iostream>
+#include <thread>
 #include <boost/program_options.hpp>
 namespace po = boost::program_options;
+
 int main(int argc, char* argv[])
 {
 	po::options_description desc("Allowed options");
@@ -17,9 +20,14 @@ int main(int argc, char* argv[])
 		std::cout << "Looks like you need help." << std::endl;
 	}
 	
-	//Launch with server
+	//Launch server only
 	if (vm.count("server")) {
 		
+	}
+	else {
+		//Run the game server locally
+		std::thread serverThread(createServer);
+		serverThread.detach();
 	}
 	Application game;
 	return 0;
