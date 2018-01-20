@@ -1,7 +1,7 @@
 SOURCES=$(wildcard src/*.cpp) $(wildcard src/*/*.cpp)
 OBJECTS=$(addprefix obj/,$(subst src/,,$(SOURCES:.cpp=.o)))
 PROGRAM=firefight
-INCLUDES=-Isrc/include/SFML/include -Isrc/include/rapidjson/include
+INCLUDES=-Isrc/include/sfml/include -Isrc/include/rapidjson/include
 
 LIBRARIES=-lcurl -pthread -lboost_system -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system
 CC=g++

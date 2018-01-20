@@ -1,0 +1,8 @@
+[submodule "src/include/rapidjson"]
+	path = src/include/rapidjson
+	url = https://github.com/tencent/rapidjson.git
+
+[submodule "src/include/sfml"]
+	path = src/include/sfml
+	url = https://github.com/SFML/SFML.git
+
