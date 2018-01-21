@@ -5,10 +5,17 @@ Renderer::Renderer(int width, int height, sf::RenderWindow* renderWindow)
 	mScreenWidth = width;
 	mScreenHeight = height;
 	mRenderWindow = renderWindow;
+
+	sf::Font* roboto = new sf::Font();
+	roboto->loadFromFile("./assets/fonts/Roboto-Black.ttf");
+	fonts["Roboto"] = roboto;
 }
 
 Renderer::~Renderer()
 {
+	std::for_each(fonts.begin(), fonts.end(), [](const auto &pair) {
+		delete pair.second;
+	});
 }
 
 void Renderer::drawSprite(sf::Sprite sprite, int x, int y) {

@@ -15,11 +15,12 @@ GameServer::GameServer() {
 	while (true) {
 		//TODO: Tick here based on server tickrate
 		this->tick();
+		usleep(10000);
 	}
 }
 
 GameServer::~GameServer() {
-	
+
 }
 
 void GameServer::tick() {
@@ -32,8 +33,8 @@ void GameServer::tick() {
 	}
 	std::string received;
 	receivePacket >> received;
-	std::cout << sender << " said: " << received << " on port: " << port << std::endl;
-	
+	//std::cout << sender << " said: " << received << " on port: " << port << std::endl;
+
 	//Send data to clients
 	sf::IpAddress recipient = "127.0.0.1";
 	sf::Packet sendPacket;

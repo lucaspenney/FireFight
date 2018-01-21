@@ -5,4 +5,5 @@
 [submodule "src/include/sfml"]
 	path = src/include/sfml
 	url = https://github.com/SFML/SFML.git
+	branch = 2.3.x
 

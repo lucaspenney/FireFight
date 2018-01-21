@@ -3,7 +3,7 @@ OBJECTS=$(addprefix obj/,$(subst src/,,$(SOURCES:.cpp=.o)))
 PROGRAM=firefight
 INCLUDES=-Isrc/include/sfml/include -Isrc/include/rapidjson/include
 
-LIBRARIES=-lcurl -pthread -lboost_system -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system
+LIBRARIES=-lcurl -pthread -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system -lsfml-network
 CC=g++
 CC_FLAGS=-std=c++11
 
@@ -22,6 +22,6 @@ clean:
 
 	rm -f $(PROGRAM) $(OBJECTS)
 
-run: ./$(PROGRAM)v
+run: ./$(PROGRAM)
 
-	./$(PROGRAM) 1 | tee result.json
+	./$(PROGRAM) 

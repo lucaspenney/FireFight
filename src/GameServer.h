@@ -1,7 +1,7 @@
-#pragma once
 
 #include <SFML/Network.hpp>
 #include <vector>
+#include <unistd.h>
 class GameServer {
 public:
 	GameServer();
