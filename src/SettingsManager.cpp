@@ -4,7 +4,8 @@
 #include <fstream>
 
 SettingsManager::SettingsManager()
-	:screenWidth(800), screenHeight(600), framerateLimit(60), verticalSync(true)
+	:screenWidth(800), screenHeight(600), framerateLimit(60),
+	verticalSync(true), resolutionX(800), resolutionY(800)
 {
 	//TODO: Read in settings from config file
 	std::string fileContents;
@@ -28,6 +29,12 @@ SettingsManager::SettingsManager()
 	if (jsonDoc["screenHeight"].IsInt()) {
 		screenHeight = jsonDoc["screenHeight"].GetInt();
 	}
+	if (jsonDoc["resolutionX"].IsInt()) {
+		resolutionX = jsonDoc["resolutionX"].GetInt();
+	}
+	if (jsonDoc["resolutionY"].IsInt()) {
+		resolutionY = jsonDoc["resolutionY"].GetInt();
+	}
 	if (jsonDoc["framerateLimit"].IsInt()) {
 		framerateLimit = jsonDoc["framerateLimit"].GetInt();
 	}
@@ -37,5 +44,5 @@ SettingsManager::SettingsManager()
 }
 
 SettingsManager::~SettingsManager() {
-	
+
 }

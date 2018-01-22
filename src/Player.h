@@ -12,12 +12,10 @@ public:
 	int y = 0;
 	sf::Sprite sprite;
 	AnimatedSprite* animatedSprite;
-	sf::View view;
 	BoundingBox* boundingBox;
 	virtual void render(Renderer* renderer);
 	virtual void update(Game* game);
-	
-	private:
-		
-};
 
+	private:
+
+};

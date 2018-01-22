@@ -5,7 +5,7 @@ INCLUDES=-Isrc/include/sfml/include -Isrc/include/rapidjson/include
 
 LIBRARIES=-lcurl -pthread -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system -lsfml-network
 CC=g++
-CC_FLAGS=-std=c++11
+CC_FLAGS=-std=c++14
 
 
 all: $(PROGRAM)

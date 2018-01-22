@@ -18,18 +18,14 @@ Player::Player()
 
 Player::~Player()
 {
-	
 }
 
 
 void Player::render(Renderer* renderer) {
-	//Update the render view
-	view.setCenter(x, y);
+	renderer->setViewPosition(x,y);
 
-	//Set the renderer to this players view
-	renderer->setView(&view);
 	animatedSprite->tick();
-	
+
 	//Render the player
 	renderer->drawSprite(*animatedSprite->sprite, x, y);
 }

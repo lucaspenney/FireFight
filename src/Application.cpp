@@ -4,18 +4,21 @@
 #include "Renderer.h"
 #include "Game.h"
 #include "SettingsManager.h"
-
+#include <iostream>
 Application::Application()
 {
-	SettingsManager settings;
-	sf::RenderWindow window(sf::VideoMode(settings.screenWidth, settings.screenHeight), "SFML works!");
+	AssetManager assetManager; //Static class instantiation
+	SettingsManager settings; //Static class
+	sf::RenderWindow window(sf::VideoMode(settings.screenWidth, settings.screenHeight), "firefight", sf::Style::Default);
+
+
 	window.setVerticalSyncEnabled(settings.verticalSync);
 	window.setFramerateLimit(settings.framerateLimit);
-	mRenderer = new Renderer(settings.screenWidth, settings.screenHeight, &window);
+	mRenderer = new Renderer(settings.screenWidth, settings.screenHeight, settings.resolutionX, settings.resolutionY, &window);
 
 	mInputManager = new InputManager(&window);
 
-	AssetManager assetManager; //Static class instantiation
+
 
 	Menu mainMenu; //Temporary
 
@@ -28,8 +31,22 @@ Application::Application()
 		game.render(mRenderer);
 		game.update();
 
+		sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+            else if (event.type == sf::Event::Resized)
+            {
+				window.setSize(sf::Vector2<unsigned int>(event.size.width, event.size.height));
+				mRenderer->setWindowSize(event.size.width, event.size.height);
+            }
+        }
+
 		window.display();
 		mInputManager->handleInput();
+
+
 	}
 }
 

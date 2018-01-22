@@ -1,0 +1,24 @@
+{
+  "name": "firefight",
+  "version": "1.0.0",
+  "description": "FireFight =========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucaspenney/FireFight.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucaspenney/FireFight/issues"
+  },
+  "homepage": "https://github.com/lucaspenney/FireFight#readme",
+  "devDependencies": {
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-if": "^2.0.2",
+    "gulp-watch": "^5.0.0"
+  }
+}

@@ -11,14 +11,20 @@ using std::map;
 class Renderer
 {
 public:
-	Renderer(int width, int height, sf::RenderWindow* renderWindow);
+	Renderer(int screenWidth, int screenHeight, int viewWidth, int viewHeight, sf::RenderWindow* renderWindow);
 	~Renderer();
 	void drawSprite(sf::Sprite sprite, int x, int y);
-	void setView(sf::View* view);
+	void setWindowSize(int width, int height);
+	void setView(sf::View view);
 	sf::RenderWindow* getWindow();
+	sf::View getView();
+	void setViewPosition(float x, float y);
 	map<string, sf::Font*> fonts;
-private:
 	int mScreenWidth;
 	int mScreenHeight;
+	int mViewWidth;
+	int mViewHeight;
+private:
 	sf::RenderWindow* mRenderWindow;
+	sf::View mActiveView;
 };

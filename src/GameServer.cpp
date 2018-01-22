@@ -13,9 +13,8 @@ GameServer::GameServer() {
 		std::cout << "Unable to bind socket to port" << std::endl;
 	}
 	while (true) {
-		//TODO: Tick here based on server tickrate
 		this->tick();
-		usleep(10000);
+		usleep(1000 * 30);
 	}
 }
 

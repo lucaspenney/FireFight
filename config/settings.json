@@ -1,6 +1,8 @@
 {
         "screenWidth": 800,
         "screenHeight": 600,
+        "resolutionX": 800,
+        "resolutionY": 600,
         "framerateLimit": 60,
         "verticalSync": true
 }

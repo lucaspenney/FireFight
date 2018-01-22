@@ -35,13 +35,10 @@ void Game::render(Renderer* renderer) {
 		double diff = 16 - delta;
 		usleep (1000 * diff);
 	}
-	if (tick % 60 == 0) {
-		double fps = (double)1000 / (double)(delta+1);
-		std::cout << "FPS: " << fps << "\n";
-	}
-
+	double fps = (double)1000 / (double)(delta+1);
 	sf::Font* f = renderer->fonts["Roboto"];
-	sf::Text text("hello", *f);
+	sf::Text text("FPS: " + std::to_string(fps), *f, 14);
+	text.setPosition(20,20);
 	renderer->getWindow()->draw(text);
 }
 
