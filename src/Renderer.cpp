@@ -38,7 +38,7 @@ void Renderer::setWindowSize(int width, int height) {
 	mActiveView = sf::View();
 	mActiveView.setSize(width,height);
 	mScreenWidth = width;
-	mScreenHeight = height
+	mScreenHeight = height;
 	mActiveView.zoom(xDiff);
 	mRenderWindow->setView(mActiveView);
 }
