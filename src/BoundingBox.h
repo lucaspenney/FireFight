@@ -1,4 +1,5 @@
 #pragma once
+#include "Bounds.h"
 class BoundingBox : public Bounds {
 public:
 	BoundingBox(int x, int y, int width, int height);
