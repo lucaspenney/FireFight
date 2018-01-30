@@ -14,11 +14,9 @@ Application::Application()
 
 	window.setVerticalSyncEnabled(settings.verticalSync);
 	window.setFramerateLimit(settings.framerateLimit);
+
 	mRenderer = new Renderer(settings.screenWidth, settings.screenHeight, settings.resolutionX, settings.resolutionY, &window);
-
 	mInputManager = new InputManager(&window);
-
-
 
 	Menu mainMenu; //Temporary
 
@@ -32,21 +30,19 @@ Application::Application()
 		game.update();
 
 		sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-            else if (event.type == sf::Event::Resized)
-            {
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+			window.close();
+			else if (event.type == sf::Event::Resized)
+			{
 				window.setSize(sf::Vector2<unsigned int>(event.size.width, event.size.height));
 				mRenderer->setWindowSize(event.size.width, event.size.height);
-            }
-        }
+			}
+		}
 
 		window.display();
 		mInputManager->handleInput();
-
-
 	}
 }
 

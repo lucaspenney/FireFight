@@ -3,7 +3,8 @@ class Entity;
 
 #include "Renderer.h"
 #include "Game.h"
-class Game;
+#include "Vector2.h"
+
 class Entity
 {
 public:
@@ -11,5 +12,7 @@ public:
 	~Entity();
 	virtual void render(Renderer* renderer);
 	virtual void update(Game* game);
-};
 
+protected:
+	Vector2 position;
+};

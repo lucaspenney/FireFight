@@ -1,6 +1,5 @@
 #include "GameServer.h"
-#include <string>
-#include <iostream>
+
 
 GameServer::GameServer() {
 	std::cout << "starting gameserver";
@@ -14,7 +13,7 @@ GameServer::GameServer() {
 	}
 	while (true) {
 		this->tick();
-		usleep(1000 * 30);
+		usleep(1000 * (1000/tickRate));
 	}
 }
 
@@ -42,4 +41,13 @@ void GameServer::tick() {
 	{
 	    //Error
 	}
+}
+
+void GameServer::log(std::string str) {
+	auto t = std::time(nullptr);
+	auto tm = *std::localtime(&t);
+	std::ofstream file;
+	file.open("server.log", std::ios::app);
+	file << "[" << std::put_time(&tm, "%Y-%m-%d %H-%M-%S") << "]: " << str << "\n";
+	file.close();
 }

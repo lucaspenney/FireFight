@@ -10,7 +10,7 @@ AnimatedSprite::AnimatedSprite(sf::Sprite* sprite, int frames, int types, int fr
 }
 
 AnimatedSprite::~AnimatedSprite() {
-
+	delete sprite;
 }
 
 void AnimatedSprite::tick() {

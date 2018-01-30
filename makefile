@@ -4,7 +4,7 @@ PROGRAM=firefight
 INCLUDES=-Isrc/include/sfml/include -Isrc/include/rapidjson/include
 
 LIBRARIES=-lcurl -pthread -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system -lsfml-network
-CC=g++
+CC=g++-6
 CC_FLAGS=-std=c++14
 
 
@@ -24,4 +24,4 @@ clean:
 
 run: ./$(PROGRAM)
 
-	./$(PROGRAM) 
+	./$(PROGRAM)
