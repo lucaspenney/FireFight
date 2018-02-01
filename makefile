@@ -3,9 +3,9 @@ OBJECTS=$(addprefix obj/,$(subst src/,,$(SOURCES:.cpp=.o)))
 PROGRAM=firefight
 INCLUDES=-Isrc/include/sfml/include -Isrc/include/rapidjson/include
 
-LIBRARIES=-lcurl -pthread -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system -lsfml-network
-CC=g++-6
-CC_FLAGS=-std=c++14
+LIBRARIES=-lcurl -lstdc++fs -pthread -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system -lsfml-network
+CC=g++-7
+CC_FLAGS=-std=c++17
 
 
 all: $(PROGRAM)
