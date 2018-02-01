@@ -10,9 +10,17 @@ gulp.task('watch', (done) => {
 
 
 gulp.task('run', (done) => {
-		exec("make", (err, stdout, stderr) => {
+		exec("make -j2", (err, stdout, stderr) => {
 			console.log('\033c')
 			if (stderr) console.log(stderr);
 			done();
 		});
 });
+
+gulp.task('rebuild', (done) => {
+	exec("make clean && make -j8", (err, stdout, stderr) => {
+		console.log('\033c')
+		if (stderr) console.log(stderr);
+		done();
+	});
+})
