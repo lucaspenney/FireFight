@@ -4,7 +4,7 @@
 
 class Connection {
 public:
-  Connection(sf::IpAddress ip, short port);
-  sf::IpAddress ipAddress;
-  unsigned short port;
+	Connection(sf::IpAddress ip, short port);
+	sf::IpAddress ipAddress;
+	unsigned short port;
 };
