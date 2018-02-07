@@ -1,6 +1,5 @@
 #include "GameServer.h"
 
-
 GameServer::GameServer() {
 	std::cout << "starting gameserver";
 	mSocket = new sf::UdpSocket;
@@ -28,18 +27,27 @@ void GameServer::tick() {
 	sf::Packet receivePacket;
 	if (mSocket->receive(receivePacket, sender, port)) {
 		//Error
+	} else {
+		std::string receiveData;
+		receivePacket >> receiveData;
+		if (std::find_if(clients.begin(), clients.end(), [&sender](Connection& c) {
+			return c.ipAddress == sender;
+		}) == clients.end()) {
+			clients.push_back(Connection(sender, port));
+		}
+		std::cout << sender << ":" << port << " said: " << receiveData << std::endl;
 	}
-	std::string received;
-	receivePacket >> received;
-	//std::cout << sender << " said: " << received << " on port: " << port << std::endl;
 
 	//Send data to clients
-	sf::IpAddress recipient = "127.0.0.1";
-	sf::Packet sendPacket;
-	sendPacket << "test";
-	if (mSocket->send(sendPacket, recipient, serverPort) != sf::Socket::Done)
-	{
-	    //Error
+	for (auto con : clients) {
+		sf::Packet sendPacket;
+		std::string sendData = "{}";
+		sendPacket << sendData;
+		if (mSocket->send(sendPacket, con.ipAddress, con.port) != sf::Socket::Done) {
+			//Error
+		} else {
+
+		}
 	}
 }
 

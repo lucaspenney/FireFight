@@ -1,6 +1,7 @@
 
 #include "Connection.h"
 
-Connection::Connection(string ip, short port) {
-  this->serverIp = sf::IpAddress(ip);
+Connection::Connection(sf::IpAddress ip, short port) {
+  this->ipAddress = sf::IpAddress(ip);
+  this->port = port;
 }

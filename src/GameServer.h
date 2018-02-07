@@ -1,4 +1,3 @@
-
 #include <SFML/Network.hpp>
 #include <vector>
 #include <unistd.h>
@@ -10,6 +9,10 @@
 #include <iomanip>
 #include <ctime>
 #include <sstream>
+#include <algorithm>
+
+#include "Game.h"
+#include "Connection.h"
 
 class GameServer {
 public:
@@ -18,11 +21,12 @@ public:
 	const unsigned short serverPort = 27030;
 	const short tickRate = 5;
 	unsigned long uptime;
-	std::vector<sf::IpAddress> clients;
+	std::vector<Connection> clients;
 	void tick();
 private:
 	sf::UdpSocket* mSocket;
 	void log(std::string str);
+	Game game;
 };
 
 //Global function to start local game server. Should only be called once, on it's own thread

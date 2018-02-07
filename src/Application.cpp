@@ -3,6 +3,7 @@
 #include "AssetManager.h"
 #include "Renderer.h"
 #include "Game.h"
+#include "Client.h"
 #include "SettingsManager.h"
 #include <iostream>
 Application::Application()
@@ -10,7 +11,6 @@ Application::Application()
 	AssetManager assetManager; //Static class instantiation
 	SettingsManager settings; //Static class
 	sf::RenderWindow window(sf::VideoMode(settings.screenWidth, settings.screenHeight), "firefight", sf::Style::Default);
-
 
 	window.setVerticalSyncEnabled(settings.verticalSync);
 	window.setFramerateLimit(settings.framerateLimit);
@@ -20,14 +20,16 @@ Application::Application()
 
 	Menu mainMenu; //Temporary
 
-	Game game;
+	Client client;
+	client.connect();
 	while (window.isOpen()) {
 		window.clear();
 		//Perform rendering here
 		window.draw(mainMenu.sprite);
 
-		game.render(mRenderer);
-		game.update();
+		client.game.render(mRenderer);
+		client.game.update();
+		client.update();
 
 		sf::Event event;
 		while (window.pollEvent(event))
